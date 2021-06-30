@@ -4,6 +4,11 @@ import {connect} from 'react-redux';
 import store from './redux/configStore';
 import styled from 'styled-components';
 
+var arr = [];
+// for (var i = 0; i < arr.length; i++) {
+//     console.log(arr)
+// }
+
 const mapStateToProps = (state) => ({
     state,
   });
@@ -11,7 +16,9 @@ const mapStateToProps = (state) => ({
 class Detail extends React.Component {
     constructor(props){
         super(props)
-        console.log(this.props.state.abc.x)
+        this.count = this.props.state.abc.list
+        console.log(this.count)
+        console.log(this.props.state.abc.list)
     }
 
     componentDidMount(){
@@ -20,16 +27,27 @@ class Detail extends React.Component {
 
     render() {
         return(
+            
             <Div>
             <h1>MyDictionary</h1>
-            {this.props.state.abc.x===undefined ? <p>새로고침하면 뜸</p>:<div>
-                {this.props.state.abc.x.map((list, index) => {
-                return (
-            <Background key={index}>{list[index]}</Background>
-                )
-            })}
-                </div>}
+            <React.Fragment>
+
             
+            
+
+            <div>
+                {this.props.state.abc.list.map((list, index) => {
+                return (
+            <Background key={index}>{list}</Background>
+                )   
+              } )}
+            </div>
+
+
+
+
+                
+            </React.Fragment>
             </Div>
         )
     }

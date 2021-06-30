@@ -6,7 +6,8 @@ import {connect} from 'react-redux';
 import {loadAC, createAC} from './redux/modules/bucket77';
 import store from './redux/configStore';
 import styled from 'styled-components';
-
+import logo from './plus.png';
+        
 const mapStateToProps = (state) => ({
   state,
 });
@@ -61,12 +62,13 @@ class App extends React.Component {
         <Background>
         <p>example</p><input type="text" ref={this.text3}/><br/>
         </Background>
-        <button onClick={this.addWorld}>추가하기</button>
         <div>{this.props.state.abc.x}</div>
+        <Link to ="/detail"><img src={logo} onClick={this.addWorld} className="App-logo" alt="logo" style={{margin:'10px auto 10px auto', width: '100px',borderRadius:'50px'}}/></Link><br/>
         </Route>
-        <Route path="/detail" component={Detail}/>
-        <Link to ="/detail"><button>추가페이지이동</button></Link>
-        <Link to ="/"><button>홈 이동</button></Link>
+
+        <Route path="/detail"><Detail/><Link to ="/"><button>홈 이동</button></Link></Route>
+        
+        
       </Div>
     )
   }
@@ -76,7 +78,9 @@ class App extends React.Component {
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(App));
 
 const Div = styled.div`
+text-align: center;
 max-width: 350px;
+max-height: 1500px;
 margin: 20px auto;
 background-color: #EFFBF2;
 `;
